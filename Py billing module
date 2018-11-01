@@ -1,0 +1,41 @@
+d1 = {101: 'Pen drive', 102: 'HDD', 103: 'Keyboard', 104: 'Flowers', 105: 'USB Chord', 106: 'Adapter',
+      107: 'Chocolates', 108: 'Coffee', 109: 'mobile', 110: 'Notebook'}
+d2 = {101: 200, 102: 5000, 103: 500, 104: 50, 105: 150, 106: 300, 107: 50, 108: 100, 109: 1000, 110: 30}
+cart = []
+
+
+def bill():
+    total = 0
+    for b in cart:
+        total = total + d2[b]
+    return total
+def gst(total):
+    g = (total * 0.18)
+    print('GST added=',g)
+    print('Total amount to be paid is ', g+total)
+
+
+a = 4
+for a in range(0,5) :
+    a = input('What do you want to do? \n 0 for exit\n 1 for Billing\n 2 for Shopping\n Enter option:')
+    a = int(a)
+    if a == 2:
+        print('Menu \n|id||Products||Prices|')
+        for z in d1:
+            print(z, d1[z], d2[z])
+        b = input('Enter product id to add in cart: ')
+        b = int(b)
+        cart.append(b)
+        print(cart)
+        #print(d1[b])
+    elif a == 1:
+        if len(cart) == 0:
+            print('Shoot! Your cart is empty. Keep shopping')
+        else:
+            d = bill()
+            gst(d)
+            print('Thank you for shopping with us. Visit again.')
+            break
+    else:
+        print('Thank you for stopping by. Visit again.')
+        break
